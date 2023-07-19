@@ -5,6 +5,7 @@ import 'package:todoapp/view/login_with_number.dart';
 
 import 'package:todoapp/view/postscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todoapp/view/shopping_page.dart';
 import 'package:todoapp/view/update.dart';
 
 import 'firestore/firestore_screen.dart';
@@ -31,7 +32,7 @@ class Todo extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: ShoppingPage(),
     );
   }
 }
