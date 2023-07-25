@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todoapp/view/login.dart';
-import 'package:todoapp/view/login_with_number.dart';
 
-import 'package:todoapp/view/postscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:todoapp/view/shopping_page.dart';
-import 'package:todoapp/view/update.dart';
 
-import 'firestore/firestore_screen.dart';
 
-void main() async {
+import 'APIs/withnumber.dart';
+
+ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const Todo());
@@ -32,7 +28,7 @@ class Todo extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ShoppingPage(),
+      home: MyForm(),
     );
   }
 }

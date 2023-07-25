@@ -22,6 +22,7 @@ class _LoginwithnumberState extends State<Loginwithnumber> {
   final _formKey = GlobalKey<FormState>();
   late bool loading = false;
   final auth = FirebaseAuth.instance;
+
   @override
   void _login(BuildContext context) {
     setState(() {
@@ -85,12 +86,11 @@ class _LoginwithnumberState extends State<Loginwithnumber> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AuthBannerWidget(
+              const AuthBannerWidget(
                 title: 'Sign up',
                 description:
-                'Welcome! to get started end the following details below',
+                    'Welcome! to get started end the following details below',
               ),
-
               const SizedBox(
                 height: 20,
               ),
