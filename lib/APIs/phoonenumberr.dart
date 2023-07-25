@@ -14,7 +14,9 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController mobileNumberController = TextEditingController();
 
+
   void registerUser() async {
+    var name=mobileNumberController.text.toString();
     final String apiEndpoint =
         'https://inobackend-production.up.railway.app/api/v1/user/register';
 

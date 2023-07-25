@@ -1,47 +1,53 @@
-class EmailAlreadyExistException implements Exception {
-  final String message;
+class AppException implements Exception {
+  final String? message;
+  final String? prefex;
 
-  EmailAlreadyExistException(this.message);
+  AppException([
+    this.message,
+    this.prefex,
+  ]);
+
+  String toStringg() {
+    return '$prefex$message';
+  }
 }
 
-class UnknownException implements Exception {
-  final String message;
-
-  UnknownException(this.message);
+class NoInternetException extends AppException {
+  NoInternetException([String? message]) : super(message, 'No Internet');
 }
 
-class NoInternetException implements Exception {
-  final String message;
-
-  NoInternetException(this.message);
+class EmailAlreadyExistException extends AppException {
+  EmailAlreadyExistException([String? message]) : super(message, 'No Internet');
 }
 
-class WrongPasswordException implements Exception {
-  final String message;
-
-  WrongPasswordException(this.message);
+class UnknownException extends AppException {
+  UnknownException([String? message]) : super(message, 'No Internet');
 }
 
-class UserNotFoundException implements Exception {
-  final String message;
-
-  UserNotFoundException(this.message);
+class WrongPasswordException extends AppException {
+  WrongPasswordException([String? message])
+      : super(message, 'Please Enter Right Password');
 }
 
-class FormatParsingException implements Exception {
-  final String message;
-
-  FormatParsingException(this.message);
+class UserNotFoundException extends AppException {
+  UserNotFoundException([String? message])
+      : super(message, 'This User is not Found');
 }
 
-class StoragePermissionDenied implements Exception {
-  final String message;
-
-  StoragePermissionDenied(this.message);
-}
-
-class StoragePermissionDeniedPermanently implements Exception {
-  final String message;
-
-  StoragePermissionDeniedPermanently(this.message);
-}
+// class FormatParsingException implements Exception {
+//   final String message;
+//
+//   FormatParsingException(this.message);
+// }
+//
+// class StoragePermissionDenied implements Exception {
+//   final String message;
+//
+//   StoragePermissionDenied(this.message);
+// }
+//
+// class StoragePermissionDeniedPermanently implements Exception {
+//   final String message;
+//
+//   StoragePermissionDeniedPermanently(this.message);
+// }

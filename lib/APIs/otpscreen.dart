@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todoapp/APIs/phoonenumberr.dart';
 
 class OTPScreen extends StatefulWidget {
   final String mobileNumber;
@@ -14,7 +15,14 @@ class OTPScreen extends StatefulWidget {
 
 class _OTPScreenState extends State<OTPScreen> {
   TextEditingController otpController = TextEditingController();
-
+  RegistrationScreen clas=RegistrationScreen();
+  static const String TOKEN ="";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     gettoken();
+  }
   void verifyOTP() async {
     final String apiEndpoint =
         'https://inobackend-production.up.railway.app/api/v1/user/verifyOTP';
@@ -33,21 +41,21 @@ class _OTPScreenState extends State<OTPScreen> {
           },
           body: json.encode(requestBody));
 
-      // Check if the request was successful
+
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
 
-        // Store the token in shared preferences
+
         String token = responseData['token'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('token', token);
+        await prefs.setString(TOKEN, token);
 
-        // Show a success message or navigate to the next screen
+
         print(responseData['message']);
         print(responseData['token']);
-        // Navigate to the next screen here if needed
+
       } else {
-        // If the request was not successful, handle the error here
+
         print('Error: ${response.statusCode}');
         print('Message: ${response.body}');
       }
@@ -69,6 +77,7 @@ class _OTPScreenState extends State<OTPScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+
             TextFormField(
               controller: otpController,
               keyboardType: TextInputType.number,
@@ -86,5 +95,16 @@ class _OTPScreenState extends State<OTPScreen> {
         ),
       ),
     );
+  }
+
+  void gettoken() async {
+    var pref=  await SharedPreferences.getInstance();
+    var gettoken = pref.getString(TOKEN);
+    var showtoken=gettoken;
+    setState(() {
+
+    });
+    print(showtoken);
+
   }
 }
