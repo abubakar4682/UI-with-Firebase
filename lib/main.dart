@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todoapp/spleshescreen/Spleshescreen.dart';
+import 'package:todoapp/view/call_image_picker.dart';
+import 'package:todoapp/view/company_and_leagues_view.dart';
 
 
 import 'APIs/phoonenumberr.dart';
 import 'APIs/withnumber.dart';
+import 'chat.dart';
+import 'image_picker/home_screen.dart';
 
  void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +34,7 @@ class Todo extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: RegistrationScreen(),
+      home:ChatScreen()
     );
   }
 }
